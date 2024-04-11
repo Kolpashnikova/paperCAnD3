@@ -93,14 +93,14 @@ pw <- df %>%
   ggplot(aes(x = t_intervals_labels, y = `Housework`, group = group)) +
   geom_area(fill = "#FF6666") +
   scale_x_datetime(labels = scales::date_format("%H:%M", tz="EST"), position = "top")  +
-  scale_y_continuous(limits = c(0, 35)) +
+  scale_y_continuous(limits = c(0, 35), labels = function(x) paste0(x, "%")) +
   coord_flip() + # flips x and y axes
   labs(title = "Women: Housework Time",
        x = "Time of Day",
-       y = "Percent") +
+       y = "") +
   theme(panel.background = element_blank(),
         panel.grid.major = element_line(color = "grey20", linetype = "dashed"),
-        panel.grid.minor = element_line(color = "grey10", linetype = "dotted"),
+        panel.grid.minor = element_blank(),
         plot.title = element_text(hjust = 0.5, face="bold", size = 14),
         axis.text.x = element_text(size = 14),
         axis.text.y = element_text(size = 14),
@@ -118,14 +118,14 @@ p <- df %>%
   ggplot(aes(x = t_intervals_labels, y = `Housework`, group = group)) +
   geom_area(fill = "#FF6666") +
   scale_x_datetime(labels = scales::date_format("%H:%M", tz="EST"), position = "top")  +
-  scale_y_continuous(limits = c(0, 35)) +
+  scale_y_continuous(limits = c(0, 35), labels = function(x) paste0(x, "%")) +
   coord_flip() + # flips x and y axes
   labs(title = "",
        x = "Time of Day",
-       y = "Percent") +
+       y = "") +
   theme(panel.background = element_blank(),
         panel.grid.major = element_line(color = "grey20", linetype = "dashed"),
-        panel.grid.minor = element_line(color = "grey10", linetype = "dotted"),
+        panel.grid.minor = element_blank(),
         plot.title = element_text(hjust = 0, face="bold", size = 14),
         axis.text.x = element_text(size = 14),
         axis.text.y = element_text(size = 14),
@@ -140,7 +140,7 @@ p <- df %>%
   enter_fade() +
   exit_shrink() +
   ease_aes('sine-in-out')+
-  labs(title = "Women: {closest_state}", x = "Time of Day", y = "Percent")
+  labs(title = "Women: {closest_state}", x = "Time of Day", y = "")
 
 
 a <- animate(p, width = 240, height = 480,
@@ -183,14 +183,14 @@ pm <- df %>%
   ggplot(aes(x = t_intervals_labels, y = `Housework`, group = group)) +
   geom_area(fill = paletteer_d("rcartocolor::Pastel",1)) +
   scale_x_datetime(labels = scales::date_format("%H:%M", tz="EST"), position = "top")  +
-  scale_y_continuous(limits = c(0, 35)) +
+  scale_y_continuous(limits = c(0, 35), labels = function(x) paste0(x, "%")) +
   coord_flip() + # flips x and y axes
   labs(title = "Men: Housework Time",
        x = "Time of Day",
-       y = "Percent") +
+       y = "") +
   theme(panel.background = element_blank(),
         panel.grid.major = element_line(color = "grey20", linetype = "dashed"),
-        panel.grid.minor = element_line(color = "grey10", linetype = "dotted"),
+        panel.grid.minor = element_blank(),
         plot.title = element_text(hjust = 0.5, face="bold", size = 14),
         axis.text.x = element_text(size = 14),
         axis.text.y = element_text(size = 14),
@@ -209,10 +209,10 @@ p <- df %>%
   geom_area(fill = paletteer_d("rcartocolor::Pastel",1)) +
   scale_x_datetime(labels = scales::date_format("%H:%M", tz="EST"))  +
   coord_flip() +
-  scale_y_reverse(limits = c(35, 0)) + #puts y reverse
+  scale_y_reverse(limits = c(35, 0), labels = function(x) paste0(x, "%")) + #puts y reverse
   theme(panel.background = element_blank(),
         panel.grid.major = element_line(color = "grey20", linetype = "dashed"),
-        panel.grid.minor = element_line(color = "grey10", linetype = "dotted"),
+        panel.grid.minor = element_blank(),
         plot.title = element_text(hjust = 1, face="bold", size = 14),
         axis.text.x = element_text(size = 14),
         axis.text.y = element_text(size = 14),
@@ -227,7 +227,7 @@ p <- df %>%
   enter_fade() +
   exit_shrink() +
   ease_aes('sine-in-out')+
-  labs(title = "{closest_state}: Men", x = "Time of Day", y = "Percent")
+  labs(title = "{closest_state}: Men", x = "Time of Day", y = "")
 
 b <- animate(p, width = 240, height = 480,
              duration = 10)

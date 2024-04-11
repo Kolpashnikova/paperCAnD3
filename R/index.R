@@ -108,14 +108,14 @@ for (i in seq_along(groups)) {
   current_plot <- ggplot(current_data, aes(x = t_intervals_labels, y = `Housework`)) +
     geom_area(fill = "#FF6666") +
     scale_x_datetime(labels = scales::date_format("%H:%M", tz = "EST"), position = "top") +
-    scale_y_continuous(limits = c(0, 35)) +
+    scale_y_continuous(limits = c(0, 35), labels = function(x) paste0(x, "%")) +
     coord_flip() +
     labs(title = paste("Women:", current_group),
          x = "",
-         y = "Percent") +
+         y = "") +
     theme(panel.background = element_blank(),
           panel.grid.major = element_line(color = "grey20", linetype = "dashed"),
-          panel.grid.minor = element_line(color = "grey10", linetype = "dotted"),
+          panel.grid.minor = element_blank(),
           plot.title = element_text(hjust = 0, face = "bold", size = 14),
           axis.text.x = element_text(size = 14),
           axis.title.x = element_text(size = 14),
@@ -177,13 +177,13 @@ for (i in seq_along(groups)) {
     geom_area(fill = paletteer_d("rcartocolor::Pastel",1)) +
     scale_x_datetime(labels = scales::date_format("%H:%M", tz="EST"))  +
     coord_flip() +
-    scale_y_reverse(limits = c(35, 0)) + #puts y reverse
+    scale_y_reverse(limits = c(35, 0), labels = function(x) paste0(x, "%")) + #puts y reverse
     labs(title = paste("Men   &"),
          x = "Time of Day",
-         y = "Percent") +
+         y = "") +
     theme(panel.background = element_blank(),
           panel.grid.major = element_line(color = "grey20", linetype = "dashed"),
-          panel.grid.minor = element_line(color = "grey10", linetype = "dotted"),
+          panel.grid.minor = element_blank(),
           plot.title = element_text(hjust = 1, face="bold", size = 14),
           axis.text.x = element_text(size = 14),
           axis.text.y = element_text(size = 14),
