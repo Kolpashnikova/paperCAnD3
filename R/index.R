@@ -118,7 +118,9 @@ for (i in seq_along(groups)) {
           panel.grid.minor = element_blank(),
           plot.title = element_text(hjust = 0, face = "bold", size = 14),
           axis.text.x = element_text(size = 14),
+          axis.text.y = element_text(size = 14),
           axis.title.x = element_text(size = 14),
+          axis.title.y = element_text(size = 14),
           plot.caption = element_text(hjust = 0, size = 14),
           legend.position = "none")
 
